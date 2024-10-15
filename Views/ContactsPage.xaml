@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AddressesApp.Views.ContactsPage"
+             Title="Contacts Page">
+    <ListView 
+        BackgroundColor="Transparent" 
+        x:Name="nameList" 
+        ItemsSource="{Binding contacts}"
+        ItemSelected="nameList_ItemSelected"
+        ItemTapped="nameList_ItemTapped"
+        
+        
+        >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <TextCell x:Name="textCell" Text="{Binding Name}" Detail="{Binding Details}" />
+
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

@@ -1,0 +1,69 @@
+# .NET specific ignores
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.project/
+.DS_Store
+.vscode/
+.idea/
+Thumbs.db
+*.dbmdl
+*.jfm
+
+# Visual Studio Code workspace settings file
+.vscode/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# macOS specific ignores
+.DS_Store
+
+# MAUI specific ignores
+# The Platforms folder contains platform-specific files that get generated
+**/Platforms/Android/bin/
+**/Platforms/Android/obj/
+**/Platforms/iOS/bin/
+**/Platforms/iOS/obj/
+**/Platforms/MacCatalyst/bin/
+**/Platforms/MacCatalyst/obj/
+**/Platforms/Tizen/bin/
+**/Platforms/Tizen/obj/
+**/Platforms/Windows/bin/
+**/Platforms/Windows/obj/
+**/Platforms/Linux/bin/
+**/Platforms/Linux/obj/
+
+# Caches
+*.crdownload
+*.temp
+*.log
+
+# JetBrains Rider project files
+.idea/
+.idea_modules/
+
+# Package directories
+packages/
+.vsix/
+.vscode/
+
+# Resharper settings
+_ReSharper*
+*.DotSettings.user
+*.DotSettings
+
+# Rider project files
+.idea/
+*.sln.iml
+.vs/
