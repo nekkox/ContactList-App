@@ -40,4 +40,9 @@ public partial class ContactsPage : ContentPage
         // DisplayAlert("tapped", $"{((Contact)e.Item).Name} tapped", "ok");
         nameList.SelectedItem = null;
     }
+
+    private void btnAdd_Clicked(object sender, EventArgs e)
+    {
+        Shell.Current.GoToAsync(nameof(AddContactPage));
+    }
 }

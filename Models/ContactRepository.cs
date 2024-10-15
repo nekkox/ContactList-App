@@ -62,5 +62,12 @@ namespace AddressesApp.Models
 
             return false;
         }
+
+        public static void AddContact(Contact contact)
+        {
+            int maxContact = _contacts.Max(x => x.ContactId);
+            contact.ContactId = maxContact+1;
+            _contacts.Add(contact);
+        }
     }
 }
