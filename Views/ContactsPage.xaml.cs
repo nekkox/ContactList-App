@@ -20,9 +20,10 @@ public partial class ContactsPage : ContentPage
     protected override void OnAppearing()
     {
         base.OnAppearing();
-        ObservableCollection<Contact> contacts = new ObservableCollection<Contact>(ContactRepository.GetAllContacts());
+        RefreshContactList();
+       // ObservableCollection<Contact> contacts = new ObservableCollection<Contact>(ContactRepository.GetAllContacts());
 
-        nameList.ItemsSource = contacts;
+       // nameList.ItemsSource = contacts;
     }
 
     private async void nameList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -44,5 +45,22 @@ public partial class ContactsPage : ContentPage
     private void btnAdd_Clicked(object sender, EventArgs e)
     {
         Shell.Current.GoToAsync(nameof(AddContactPage));
+    }
+
+    private void MenuItem_Clicked(object sender, EventArgs e)
+    {
+        MenuItem menuItem = (MenuItem)sender;
+        Contact contact = (Contact)menuItem.CommandParameter;
+        ContactRepository.DeleteContact(contact.ContactId);
+        RefreshContactList();
+        DisplayAlert("xxx", $"Contact {contact.ContactId} deleted successfully", "OK");
+       
+    }
+
+    private void RefreshContactList()
+    {
+        ObservableCollection<Contact> contacts = new ObservableCollection<Contact>(ContactRepository.GetAllContacts());
+
+        nameList.ItemsSource = contacts;
     }
 }

@@ -10,11 +10,11 @@ public partial class AddContactPage : ContentPage
 		InitializeComponent();
 	}
 
-    private void btnCancel_Clicked(object sender, EventArgs e)
-    {
-        Shell.Current.GoToAsync("..");
+    //private void btnCancel_Clicked(object sender, EventArgs e)
+    //{
+    //    Shell.Current.GoToAsync("..");
 
-    }
+    //}
 
     private void contactCtrl_OnSave(object sender, EventArgs e)
     {
@@ -29,7 +29,7 @@ public partial class AddContactPage : ContentPage
 
     private void contactCtrl_OnCancel(object sender, EventArgs e)
     {
-
+        Shell.Current.GoToAsync("..");
     }
 
     private void contactCtrl_onError(object sender, string e)

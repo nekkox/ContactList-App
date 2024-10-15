@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -68,6 +69,16 @@ namespace AddressesApp.Models
             int maxContact = _contacts.Max(x => x.ContactId);
             contact.ContactId = maxContact+1;
             _contacts.Add(contact);
+        }
+
+        public static void DeleteContact(int contactId)
+        {
+            
+            Contact? contact = _contacts.FirstOrDefault((x)=>x.ContactId == contactId);
+            if (contact != null)
+            {
+                _contacts.Remove(contact);
+            }
         }
     }
 }

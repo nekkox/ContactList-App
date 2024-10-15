@@ -13,7 +13,20 @@
         >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextCell x:Name="textCell" Text="{Binding Name}" Detail="{Binding Details}" />
+                    <TextCell 
+                        x:Name="textCell" 
+                        Text="{Binding Name}" 
+                        Detail="{Binding Details}">
+                        <TextCell.ContextActions>
+                            <MenuItem 
+                                Text="Delete"
+                                Clicked="MenuItem_Clicked"
+                                IsDestructive="True"
+                                CommandParameter="{Binding .}">
+                            </MenuItem>
+                            
+                        </TextCell.ContextActions>
+                    </TextCell>
 
                 </DataTemplate>
             </ListView.ItemTemplate>
