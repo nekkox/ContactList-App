@@ -1,4 +1,5 @@
 using AddressesApp.Models;
+using CommunityToolkit.Maui.Core.Extensions;
 using System.Collections.ObjectModel;
 
 namespace AddressesApp.Views;
@@ -47,7 +48,7 @@ public partial class ContactsPage : ContentPage
         Shell.Current.GoToAsync(nameof(AddContactPage));
     }
 
-    private void MenuItem_Clicked(object sender, EventArgs e)
+    private void Delete_Clicked(object sender, EventArgs e)
     {
         MenuItem menuItem = (MenuItem)sender;
         Contact contact = (Contact)menuItem.CommandParameter;
@@ -61,6 +62,13 @@ public partial class ContactsPage : ContentPage
     {
         ObservableCollection<Contact> contacts = new ObservableCollection<Contact>(ContactRepository.GetAllContacts());
 
+        nameList.ItemsSource = contacts;
+    }
+
+    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        string searchText = ((SearchBar)sender).Text;
+        ObservableCollection<Contact> contacts = ContactRepository.SearchContacts(searchText).ToObservableCollection();
         nameList.ItemsSource = contacts;
     }
 }

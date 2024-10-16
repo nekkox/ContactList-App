@@ -3,8 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AddressesApp.Views.ContactsPage"
              Title="Contacts Page">
-    <Grid RowDefinitions="*,50" ColumnDefinitions="*"> 
-        <ListView Grid.Row="0" Grid.Column="0"
+    <Grid RowDefinitions="50,*,50" ColumnDefinitions="*">
+        <SearchBar x:Name="searchBar" Placeholder="Search Contact" Grid.Row="0" Grid.Column="0" TextChanged="SearchBar_TextChanged"></SearchBar>
+        <ListView Grid.Row="1" Grid.Column="0"
         BackgroundColor="Transparent" 
         x:Name="nameList" 
         ItemsSource="{Binding contacts}"
@@ -20,7 +21,7 @@
                         <TextCell.ContextActions>
                             <MenuItem 
                                 Text="Delete"
-                                Clicked="MenuItem_Clicked"
+                                Clicked="Delete_Clicked"
                                 IsDestructive="True"
                                 CommandParameter="{Binding .}">
                             </MenuItem>
@@ -32,7 +33,7 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button CornerRadius="0" Text="Add Contact" x:Name="btnAdd" Clicked="btnAdd_Clicked" Grid.Row="1" Grid.Column="0" />
+        <Button CornerRadius="0" Text="Add Contact" x:Name="btnAdd" Clicked="btnAdd_Clicked" Grid.Row="2" Grid.Column="0" />
 
     </Grid>
 </ContentPage>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
@@ -79,6 +80,31 @@ namespace AddressesApp.Models
             {
                 _contacts.Remove(contact);
             }
+        }
+
+        public static List<Contact> SearchContacts(string searchText)
+        {
+            List<Contact> foundContacts = _contacts.Where(x=>!string.IsNullOrWhiteSpace(x.Name) && x.Name.StartsWith(searchText, StringComparison.OrdinalIgnoreCase))?.ToList();
+
+            if (foundContacts == null || foundContacts.Count <= 0)
+            {
+                foundContacts = _contacts.Where(x => x.Email.StartsWith(searchText, StringComparison.OrdinalIgnoreCase))?.ToList();
+            }
+            else
+            {
+                return foundContacts;
+            }
+
+            if (foundContacts == null || foundContacts.Count <= 0)
+            {
+                foundContacts = _contacts.Where(x => x.Color.StartsWith(searchText, StringComparison.OrdinalIgnoreCase))?.ToList();
+            }
+            else
+            {
+                return foundContacts;
+            }
+
+            return foundContacts;
         }
     }
 }
